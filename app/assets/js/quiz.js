@@ -71,10 +71,37 @@ var quiz = {
       label.setAttribute("for", "quizo" + i)
       label.dataset.idx = i
       label.addEventListener("click", () => {
+        console.log("--->", quiz.data[quiz.now].o[i])
         quiz.select(label)
       })
       quiz.hAns.appendChild(label)
     }
+  },
+
+  select: option => {
+    let all = quiz.hAns.getElementsByTagName("label")
+    for (let label of all) {
+      label.removeEventListener("click", quiz.select)
+    }
+
+    let correct = option.dataset.idx == quiz.data[quiz.now].a
+    if (correct) {
+      quiz.score++
+
+      option.classList.add("correct")
+    } else {
+      option.classList.add("wrong")
+    }
+
+    quiz.now++
+    setTimeout(() => {
+      if (quiz.now < quiz.data.length) {
+        quiz.draw()
+      } else {
+        quiz.hQn.innerHTML = `You have answered ${quiz.score} of ${quiz.data.length} correctly.`
+        quiz.hAns.innerHTML = ""
+      }
+    }, 1000)
   },
 
   reset: () => {
