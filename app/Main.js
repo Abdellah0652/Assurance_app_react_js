@@ -14,10 +14,10 @@ function Main() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/Slider" element={<Slider />} />
           <Route path="/AutoForm" element={<AutoForm />} />
           <Route path="/HomeSlider" element={<HomeSlider />} />
         </Routes>
+        <Slider />
         <Footer />
       </BrowserRouter>
     </>

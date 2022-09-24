@@ -23,7 +23,7 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="blog.html">
+                  <Link to="/AutoForm">
                     Assurance
                     <br /> sante
                   </Link>
